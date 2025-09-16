@@ -1,18 +1,34 @@
-numUno = 5
-numDos = 8
-numTres = 3
 
-function compararNumeros(numUno, numDos, numTres) {
-    let auxiliar = 0
-    let contadorVueltas=0
-    let numeros = [numUno, numDos, numTres]
-    for (let index = 0; contadorVueltas < numeros.length; index++) {
-        for (let i = 0; i < numeros.length; i++) {
-            if (numeros[i] > numeros[i + 1]) {
-                auxiliar = numeros[i]
-                numeros[i] = numeros[i + 1]
-                numeros[i+1] = auxiliar
-            } contadorVueltas++
+
+/*Usar continue en el de comparacion de numeros iguales*/
+function compararNumerosIguales(numeros) {
+    listaDeIguales=[];
+    for (let i = 0; i < numeros.length; i++) {
+        for (let j = 0; j < numeros.length; j++) {
+            if (numeros[i]==numeros[j] && i!=j && !listaDeIguales.includes(numeros[i])) {
+                listaDeIguales.push(numeros[i]) 
+            }   
         }
-    }return numeros
+    }return listaDeIguales
 }
+
+
+function ordenarNumeros(listaNumeros) {
+    let auxiliar = 0;
+    for (i=0; i < listaNumeros.length; i++) {
+        j = 1;
+            for (let j = 0; j < listaNumeros.length - 1; j++) {
+                if (listaNumeros[j] < listaNumeros[j+1]) {
+                    auxiliar = listaNumeros[j];
+                    listaNumeros[j] = listaNumeros[j+1];
+                    listaNumeros[j+1] = auxiliar;
+                }
+            }j++;
+    }return listaNumeros;
+} 
+
+numeros=[5,7,9,2,4,6,5]
+lista=ordenarNumeros(numeros)
+console.log(lista)
+listaDeIguales=compararNumerosIguales(lista)
+console.log(listaDeIguales)
